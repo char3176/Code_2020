@@ -1,67 +1,247 @@
+# Created by https://www.gitignore.io/api/c++,java,linux,macos,gradle,windows,visualstudiocode
 
-DianaDev/Main/.gradle/5.0/fileHashes/fileHashes.lock
-DianaDev/Main/.gradle/5.0/fileContent/fileContent.lock
-DianaDev/Main/.gradle/5.0/fileChanges/last-build.bin
-DianaDev/Main/.classpath
-KyleDev/subteamPractice/vendordeps/WPILibOldCommands.json
-KyleDev/subteamPractice/vendordeps/WPILibNewCommands.json
-KyleDev/subteamPractice/vendordeps/REVRobotics.json
-KyleDev/subteamPractice/vendordeps/Phoenix.json
-KyleDev/subteamPractice/vendordeps/navx_frc.json
-KyleDev/subteamPractice/src/main/java/frc/robot/Robot.java
-KyleDev/subteamPractice/src/main/java/frc/robot/Main.java
-KyleDev/subteamPractice/src/main/deploy/example.txt
-KyleDev/subteamPractice/settings.gradle
-KyleDev/subteamPractice/gradlew.bat
-KyleDev/subteamPractice/gradlew
-KyleDev/subteamPractice/gradle/wrapper/gradle-wrapper.properties
-KyleDev/subteamPractice/gradle/wrapper/gradle-wrapper.jar
-KyleDev/subteamPractice/build.gradle
-KyleDev/subteamPractice/.wpilib/wpilib_preferences.json
-KyleDev/subteamPractice/.vscode/settings.json
-KyleDev/subteamPractice/.vscode/launch.json
-KyleDev/Newpractice/build/tmp/jar/MANIFEST.MF
-KyleDev/Newpractice/build/libs/Newpractice.jar
-KyleDev/Newpractice/bin/main/frc/robot/Robot.class
-KyleDev/Newpractice/bin/main/frc/robot/Main.class
-KyleDev/Newpractice/bin/main/frc/robot/controller.class
-KyleDev/Newpractice/bin/main/frc/robot/constants.class
-KyleDev/Newpractice/bin/main/frc/robot/constants.class
-KyleDev/Newpractice/.settings/org.eclipse.buildship.core.prefs
-KyleDev/Newpractice/.project
-KyleDev/Newpractice/.gradle/vcs-1/gc.properties
-KyleDev/Newpractice/.gradle/buildOutputCleanup/outputFiles.bin
-KyleDev/Newpractice/.gradle/buildOutputCleanup/cache.properties
-KyleDev/Newpractice/.gradle/buildOutputCleanup/buildOutputCleanup.lock
-KyleDev/Newpractice/.gradle/6.0.1/javaCompile/taskHistory.bin
-KyleDev/Newpractice/.gradle/6.0.1/javaCompile/javaCompile.lock
-KyleDev/Newpractice/.gradle/6.0.1/javaCompile/jarAnalysis.bin
-KyleDev/Newpractice/.gradle/6.0.1/javaCompile/classAnalysis.bin
-KyleDev/Newpractice/.gradle/6.0.1/gc.properties
-KyleDev/Newpractice/.gradle/6.0.1/fileHashes/resourceHashesCache.bin
-KyleDev/Newpractice/.gradle/6.0.1/fileHashes/fileHashes.lock
-KyleDev/Newpractice/.gradle/6.0.1/fileHashes/fileHashes.bin
-KyleDev/Newpractice/.gradle/6.0.1/fileContent/fileContent.lock
-KyleDev/Newpractice/.gradle/6.0.1/fileChanges/last-build.bin
-KyleDev/Newpractice/.gradle/6.0.1/executionHistory/executionHistory.lock
-KyleDev/Newpractice/.gradle/6.0.1/executionHistory/executionHistory.bin
-KyleDev/Newpractice/.classpath
-KyleDev/Main/src/main/java/frc/robot/Robot.java
-KyleDev/Main/src/main/java/frc/robot/Main.java
-KyleDev/Main/src/main/deploy/example.txt
-KyleDev/Main/settings.gradle
-KyleDev/Main/gradlew.bat
-KyleDev/Main/gradlew
-KyleDev/Main/gradle/wrapper/gradle-wrapper.properties
-KyleDev/Main/gradle/wrapper/gradle-wrapper.jar
-KyleDev/Main/build.gradle
-KyleDev/Main/.wpilib/wpilib_preferences.json
-KyleDev/Main/.vscode/settings.json
-KyleDev/Main/.vscode/launch.json
-KyleDev/Test123/vendordeps/WPILibNewCommands.json
-KyleDev/Test123/vendordeps/Phoenix.json
-KyleDev/Test123/src/main/java/frc/robot/Robot.java
-KyleDev/Test123/src/main/deploy/example.txt
-KyleDev/Test123/gradlew
-KyleDev/Test123/gradle/wrapper/gradle-wrapper.jar
-KyleDev/Test123/.vscode/launch.json
+### C++ ###
+# Prerequisites
+*.d
+**/*.d
+
+# Compiled Object files
+*.slo
+**/*.slo
+*.lo
+**/*.lo
+*.o
+**/*.o
+*.obj
+**/*.obj
+
+# Precompiled Headers
+*.gch
+**/*.gch
+*.pch
+**/*.pch
+
+# Compiled Dynamic libraries
+*.so
+**/*.so
+*.dylib
+**/*.dylib
+*.dll
+**/*.dll
+
+# Fortran module files
+*.mod
+**/*.mod
+*.smod
+**/*.smod
+
+# Compiled Static libraries
+*.lai
+**/*.lai
+*.la
+**/*.la
+*.a
+**/*.a
+*.lib
+**/*.lib
+
+# Executables
+*.exe
+**/*.exe
+*.out
+**/*.out
+*.app
+**/*.app
+
+### Java ###
+# Compiled class file
+*.class
+**/*.class
+
+# Log file
+*.log
+**/*.log
+
+# BlueJ files
+*.ctxt
+**/*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+**/.mtj.tmp/
+
+# Package Files #
+*.jar
+**/*.jar
+*.war
+**/*.war
+*.nar
+**/*.nar
+*.ear
+**/*.ear
+*.zip
+**/*.zip
+*.tar.gz
+**/*.tar.gz
+*.rar
+**/*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+**/hs_err_pid*
+
+### Linux: backup versions of edited files created by editors such as vim or emacs ###
+*~
+**/*~
+
+# temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
+**/.fuse_hidden*
+
+# KDE directory preferences
+.directory
+**/.directory
+
+# Linux or Mac trash folder which might appear on any partition or disk
+.Trash-*
+**/.Trash-*
+
+# .nfs files are created when an open file is removed but is still being accessed
+.nfs*
+**/.nfs*
+
+### macOS Filesystem metadata stores ###
+# General
+.DS_Store
+**/.DS_Store
+.AppleDouble
+**/.AppleDouble
+.LSOverride
+**/.LSOverride
+
+# Icon must end with two \r
+Icon
+**/Icon
+
+# Thumbnails
+#._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+**/.DocumentRevisions-V100
+.fseventsd
+**/.fseventsd
+.Spotlight-V100
+**/.Spotlight-V100
+.TemporaryItems
+**/.TemporaryItems
+.Trashes
+**/.Trashes
+.VolumeIcon.icns
+**/.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+**/.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+**/.AppleDB
+.AppleDesktop
+**/.AppleDesktop
+Network Trash Folder
+**/Network Trash Folder
+Temporary Items
+**/Temporary Items
+.apdisk
+**/.apdisk
+
+### VisualStudioCode ###
+.vscode/*
+**/.vscode/*
+# NOTE: It is unclear why these are BANGED when .vscode is not.
+# NOTE: Commenting them out for now.
+#!.vscode/settings.json
+#!.vscode/tasks.json
+#!.vscode/launch.json
+#!.vscode/extensions.json
+
+### Windows ###
+# Windows thumbnail cache files
+Thumbs.db
+**/Thumbs.db
+ehthumbs.db
+**/ehthumbs.db
+ehthumbs_vista.db
+**/ehthumbs_vista.db
+
+# Dump file
+*.stackdump
+**/*.stackdump
+
+# Folder config file
+[Dd]esktop.ini
+**/[Dd]esktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+**/$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+**/*.cab
+*.msi
+**/*.msi
+*.msix
+**/*.msix
+*.msm
+**/*.msm
+*.msp
+**/*.msp
+
+# Windows shortcuts
+*.lnk
+**/*.lnk
+
+### Gradle ###
+.gradle
+**/.gradle
+/build/
+**/build/
+
+# Gradle GUI config
+gradle-app.setting
+**/gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored).
+# REASON: it enables you use the correct gradle version to build a 
+# REASON: project, if you have a different version installed on your
+# REASON: machine.
+!gradle-wrapper.jar
+**/!gradle-wrapper.jar
+
+# Cache of project
+.gradletasknamecache
+**/.gradletasknamecache
+
+# # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
+# gradle/wrapper/gradle-wrapper.properties
+
+# # VS Code Specific Java Settings
+.classpath
+**/.classpath
+.project
+**/.project
+.settings/
+**/.settings/
+bin/
+# Suspect that recursive gitignore of bin directories could be bad. 
+# If learn to be different and applicable to developers, uncomment this.
+#**/bin/
+
+# WPILIB .dot-dir for wpilib preferences being BANGED out.
+# REASON: Could cause confusion among uknowning/noob devs and
+# REASON: at present it's just a plain-text "wpilib_preferences.json"
+# REASON: that will be  essentially zero load on git repo database size.
+!.wpilib
+!**/.wpilib
+
+# End of https://www.gitignore.io/api/c++,java,linux,macos,gradle,windows,visualstudiocode

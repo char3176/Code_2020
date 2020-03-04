@@ -82,7 +82,7 @@ public class Turret extends SubsystemBase {
     }
 
     public double getTurretPosition() {
-        return rotateMotor.getSelectedSensorPosition(0);    // <-- Should this be "...Position()" or else "...Position(TurrentConstants.SOME_ID)"?  If latter, which ID?
+        return rotateMotor.getSelectedSensorPosition(0);    // <-- Gets selected sensor position in _raw_ sensor units.  "0" for Primary closed-loop, "1" for auxilliary closed-loop.
     }
 
     public void setTurretPosition(double wantedAngle) {
@@ -111,7 +111,7 @@ public class Turret extends SubsystemBase {
     }
 
     public void setTurretAngle(int angle) {
-        rotateMotor.setSelectedSensorPosition(angle);
+        rotateMotor.setSelectedSensorPosition(angle);    // <-- doesn't setSelectSensorPosition() use raw sensor units, not degrees of an angle?
     }
 
     //Returns the angle offset where 0 degrees is where the turret and robot are facing the same direction

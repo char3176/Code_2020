@@ -1,10 +1,8 @@
 
 package frc.robot.commands;
 
-import frc.robot.constants.TurrentConstants;
 import frc.robot.subsystems.Turret;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class OscillateTurret extends CommandBase {
 
@@ -27,22 +25,21 @@ public class OscillateTurret extends CommandBase {
   @Override
   public void execute() {
     if(isTurningRight) {
-      //Go to the maxPos
-      turret.setTurretPosition(turret.getMaxPos());
-      //Turret is less than the maxPos so turn around
-      if(turret.getTurretAngle() > (turret.getMaxPos() - 5.0)) {
-        isTurningRight = false;
+        //Go to the maxPos
+        turret.setTurretPosition(turret.getMaxPos());
+        //Turret is less than the maxPos so turn around
+        if(turret.getTurretAngle() > (turret.getMaxPos() - 5.0)) {
+            isTurningRight = false;
+        }  
     } else {    
-      //Go to the minPos
-      turret.setTurretPosition(turret.getMinPos());
-      //Turret is greater than the minPos so turn around
-      if(turret.getTurretAngle() < (turret.getMinPos() + 5.0)) {
-        isTurningRight = true;
-      }
-    turret.calibratePosition();
+        //Go to the minPos
+        turret.setTurretPosition(turret.getMinPos());
+        //Turret is greater than the minPos so turn around
+        if(turret.getTurretAngle() < (turret.getMinPos() + 5.0)) {
+            isTurningRight = true;
+        }
     }
   }
-}
 
   @Override
   public void end(boolean interrupted) {
@@ -52,5 +49,9 @@ public class OscillateTurret extends CommandBase {
   @Override
   public boolean isFinished() {
     return finished;
+  }
+    
+  public void setFinished(boolean finished) {
+    this.finished = finished;
   }
 }

@@ -17,6 +17,11 @@ package frc.robot.constants;
  */
 public final class TurretConstants {
 
+
+    // IDs
+    public static int ROTATE_MOTOR_ID = 33;
+    public static int HALLEFFECT_SENSOR_ID = 0;
+
     //LIMITS
     public static final double TURRET_PERCENT_OUTPUT = 1.0; //As a decimal
     public static final double TURRET_MAX_OUTPUT = 0.1;

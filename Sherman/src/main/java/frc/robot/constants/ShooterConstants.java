@@ -9,4 +9,5 @@ public class ShooterConstants {
     public static double FLYWHEEL_D = 0.0002;
 
     public static int FLYWHEEL_VELOCITY = 0;
+    public static double FLYWHEEL_SPINUP_TIME = 1.0;
 }

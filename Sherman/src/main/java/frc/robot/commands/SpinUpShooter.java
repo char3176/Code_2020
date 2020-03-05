@@ -30,7 +30,7 @@ public class SpinUpShooter extends CommandBase {
 
   @Override
   public boolean isFinished() {
-    if(Timer.getFPGATimestamp() > startTime + 1.0){
+    if(Timer.getFPGATimestamp() > startTime + ShooterConstants.FLYWHEEL_SPINUP_TIME){
       return true;//Spinning down the motor needs to be a separate command so it can come after the conveyor shoot
     } else {
       return false;

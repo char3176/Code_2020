@@ -22,7 +22,7 @@ public class LockOnTurret extends CommandBase {
   private double visionAngle;
   private double setPoint;
 
-  public LockOnTurret(DoubleSupplier stick, BooleanSupplier button) {
+  public LockOnTurret() {
     addRequirements(turret);
     seesTarget = false;
     oscillateTurret = new OscillateTurret();

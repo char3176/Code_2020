@@ -42,9 +42,6 @@ public class Turret extends SubsystemBase {
     private boolean currentHall = false;
     private boolean lastHall = false;
 
-    private double currentAngle2 = 1.0;
-    private double lastAngle2 = 0.0;
-
     public Turret() {
       setBoosterOutput(0.0);
       setFlywheelOutput(0.0);
@@ -62,11 +59,6 @@ public class Turret extends SubsystemBase {
         return instance;
     }
 
-    public double getCurrentAngle() { return currentAngle2; }
-    public void setCurrentAngle(double angle) { currentAngle2 = angle; }
-    public double getLastAngle() { return lastAngle2; }
-    public void setLastAngle(double angle) { lastAngle2 = angle; }
-
     public double getFlywheelOutput() {
       double output = flywheelMotor.getMotorOutputPercent();
       SmartDashboard.putNumber("flyWheel (%)Output", output);
@@ -82,7 +74,7 @@ public class Turret extends SubsystemBase {
     }
 
     public double getTurretPosition() {
-        return rotateMotor.getSelectedSensorPosition(0);    // <-- Gets selected sensor position in _raw_ sensor units.  "0" for Primary closed-loop, "1" for auxilliary closed-loop.
+        return rotateMotor.getSelectedSensorPosition();    // <-- Gets selected sensor position in _raw_ sensor units.  "0" for Primary closed-loop, "1" for auxilliary closed-loop.
     }
 
     public void setTurretPosition(double wantedAngle) {
@@ -92,16 +84,16 @@ public class Turret extends SubsystemBase {
         } else if(wantedAngle < minPos) {
             wantedAngle = minPos;
         }
+        SmartDashboard.putNumber("Wanted Angle", wantedAngle);
         currentAngle = getTurretAngle();
         double output = -1 * pid.calculate(currentAngle, wantedAngle);
-        double error = wantedAngle - currentAngle;
         // if (Math.abs(error) > 90) {
-          if (output > TurrentConstants.TURRET_MAX_ROTATION_OUTPUT) {
+        if (output > TurrentConstants.TURRET_MAX_ROTATION_OUTPUT) {
             output = TurrentConstants.TURRET_MAX_ROTATION_OUTPUT;
-          } else if (output < -TurrentConstants.TURRET_MAX_ROTATION_OUTPUT) {
+        } else if (output < -TurrentConstants.TURRET_MAX_ROTATION_OUTPUT) {
             output = -TurrentConstants.TURRET_MAX_ROTATION_OUTPUT;
-          }
-
+        }
+        SmartDashboard.putNumber("Output", output);
         rotateMotor.set(ControlMode.PercentOutput, output);
     }
 
@@ -111,7 +103,9 @@ public class Turret extends SubsystemBase {
     }
 
     public void setTurretAngle(int angle) {
-        rotateMotor.setSelectedSensorPosition(angle);    // <-- doesn't setSelectSensorPosition() use raw sensor units, not degrees of an angle?
+        double rawAngle2Tics = angle / (TurrentConstants.MOTOR_TO_TURRET_GEAR_RATIO * TurrentConstants.REVOLUTIONS_PER_ENCODER_TICK * 360);
+        int rawTics = (int) rawAngle2Tics;
+        rotateMotor.setSelectedSensorPosition(rawTics);    
     }
 
     //Returns the angle offset where 0 degrees is where the turret and robot are facing the same direction

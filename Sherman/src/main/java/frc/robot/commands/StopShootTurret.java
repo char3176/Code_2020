@@ -1,19 +1,19 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.Turret;
+import frc.robot.subsystems.ShooterByJake;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class StopShootTurret extends CommandBase {
 
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
 
-  private final Turret turret = Turret.getInstance();
+  private final ShooterByJake m_ShooterByJake = ShooterByJake.getInstance();
 
   private boolean stop = false;
 
   public StopShootTurret() { 
-    addRequirements(turret);
+    addRequirements(m_ShooterByJake);
     stop = true;
   }
 
@@ -25,8 +25,8 @@ public class StopShootTurret extends CommandBase {
 
   @Override
   public void end(boolean interrupted) {
-    turret.setBoosterOutput(0.0);
-    turret.setFlywheelOutput(0.0);
+    m_ShooterByJake.setBoosterOutput(0.0);
+    m_ShooterByJake.setFlywheelOutput(0.0);
   }
 
   @Override

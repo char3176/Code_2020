@@ -8,31 +8,31 @@
 package frc.robot.commands;
 
 import frc.robot.constants.TurretConstants;
-import frc.robot.subsystems.Turret;
+import frc.robot.subsystems.ShooterByJake;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class ShootTurret extends CommandBase {
 
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
 
-  private Turret turret = Turret.getInstance();
+  private ShooterByJake m_ShooterByJake = ShooterByJake.getInstance();
 
   public ShootTurret() {
-    addRequirements(turret);
+    addRequirements(m_ShooterByJake);
   }
 
   // Called just before this Command runs the first time
   @Override
   public void initialize() {
-    turret.setBoosterOutput(0.0);
-    turret.setFlywheelOutput(0.0);
+    m_ShooterByJake.setBoosterOutput(0.0);
+    m_ShooterByJake.setFlywheelOutput(0.0);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   public void execute() {
-    turret.setBoosterOutput(TurretConstants.TURRET_MAX_BOOSTER_OUTPUT);
-    turret.setFlywheelOutput(TurretConstants.TURRET_MAX_FLYWHEEL_OUTPUT);
+    m_ShooterByJake.setBoosterOutput(TurretConstants.TURRET_MAX_BOOSTER_OUTPUT);
+    m_ShooterByJake.setFlywheelOutput(TurretConstants.TURRET_MAX_FLYWHEEL_OUTPUT);
   }
 
   // Make this return true when this Command no longer needs to run execute()

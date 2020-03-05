@@ -19,8 +19,8 @@ public class Shoot extends SequentialCommandGroup {
         )
       ),
       new ParallelCommandGroup(
-        new TurretToZero()
-        //new EndShoot()
+        new TurretToZero(),
+        new SpinDownShooter()
       )
     );
   }

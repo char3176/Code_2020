@@ -18,8 +18,8 @@ public class Turret extends SubsystemBase {
     //Sensors
     private DigitalInput hallEffect = new DigitalInput(TurretConstants.HALLEFFECT_SENSOR_ID);
     private TalonSRX rotateMotor = new TalonSRX(TurretConstants.ROTATE_MOTOR_ID); //Might be (port) 12    
-    //private TalonSRX boosterMotor = new TalonSRX(22);
-    //private WPI_TalonFX flywheelMotor = new WPI_TalonFX(11);
+    private TalonSRX boosterMotor = new TalonSRX(22);
+    private WPI_TalonFX flywheelMotor = new WPI_TalonFX(11);
 
     //Measured in Degrees
     private double minPos = -88.0; //-88
@@ -42,13 +42,13 @@ public class Turret extends SubsystemBase {
         calibratePosition();
     }
 
-    //public void setFlywheelOutput(double percent) {
-    //  flywheelMotor.setVoltage(percent * TurretConstants.PERCENT_OUTPUT_TO_VOLTAGE);
-    //}
+    public void setFlywheelOutput(double percent) {
+      flywheelMotor.setVoltage(percent * TurretConstants.PERCENT_OUTPUT_TO_VOLTAGE);
+    }
 
-    //public void setBoosterOutput(double percent) {
-    //  boosterMotor.set(ControlMode.PercentOutput, percent);
-    //}
+    public void setBoosterOutput(double percent) {
+      boosterMotor.set(ControlMode.PercentOutput, percent);
+    }
 
     public static Turret getInstance() {
         return instance;

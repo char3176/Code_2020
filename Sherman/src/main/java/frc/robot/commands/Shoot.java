@@ -12,15 +12,15 @@ public class Shoot extends SequentialCommandGroup {
       new ParallelRaceGroup(
         new LockOn(),
         new SequentialCommandGroup(
-          new Until(G2),
+          //new Until(G2),
           new SpinUpShooter(),
-          new Until(buttonpress),
+          //new Until(buttonpress),
           new ShootConveyor()
         )
       ),
       new ParallelCommandGroup(
-        new Turret2Zero(),
-        new EndShoot()
+        new TurretToZero()
+        //new EndShoot()
       )
     );
   }

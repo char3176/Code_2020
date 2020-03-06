@@ -16,14 +16,14 @@ public class SpinUpShooter extends CommandBase {
   @Override
   public void initialize() {
     // m_Shooter.setFlywheelVelocityControl(ShooterConstants.FLYWHEEL_VELOCITY);
-    m_Shooter.setFlywheelPercentControl(ShooterConstants.FLYWHEEL_PERCENT_CONTROL);
-    m_Shooter.setBoosterPercentControl(ShooterConstants.BOOSTER_PERCENT_CONTROL);
+    m_Shooter.setFlywheelPercentControl(ShooterConstants.FLYWHEEL_PERCENT_OUTPUT);
+    m_Shooter.setBoosterPercentControl(ShooterConstants.BOOSTER_PERCENT_OUTPUT);
     startTime = Timer.getFPGATimestamp();
   }
 
   @Override
   public void execute() {
-    m_Shooter.setFlywheelPercentControl(ShooterConstants.FLYWHEEL_PERCENT_CONTROL);
+    m_Shooter.setFlywheelPercentControl(ShooterConstants.FLYWHEEL_PERCENT_OUTPUT);
   }
 
   @Override

@@ -9,19 +9,19 @@ public class FireNForget extends SequentialCommandGroup {
 
   public FireNForget() {
     super(
-      new ParallelRaceGroup(
-        new LockOnTurret(),
-        new SequentialCommandGroup(
-          //new Until(G2),
-          new SpinUpShooter(),
-          //new Until(buttonpress),
-          new ShootConveyor()
-        )
-      ),
-      new ParallelCommandGroup(
-        new TurretToZero(),
-        new SpinDownShooter()
-      )
+    //   new ParallelRaceGroup(
+    //     // new LockOn(),
+    //     // new SequentialCommandGroup(
+    //     //   new Until(G2),
+    //     //   new SpinUpShooter(),
+    //     //   new Until(buttonpress),
+    //     //   new ShootConveyor()
+    //     )
+    //   ),
+    //   new ParallelCommandGroup(
+    //     new Turret2Zero(),
+    //     new EndShoot()
+    //   )
     );
   }
 }

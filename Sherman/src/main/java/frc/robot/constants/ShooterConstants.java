@@ -10,4 +10,7 @@ public class ShooterConstants {
 
     public static int FLYWHEEL_VELOCITY = 1;
     public static double FLYWHEEL_SPINUP_TIME = 1.0;   // in units of seconds ... I think
+
+    public static int FLYWHEEL_PERCENT_CONTROL = 1;
+    public static int BOOSTER_PERCENT_CONTROL = 1;
 }

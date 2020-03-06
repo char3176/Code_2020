@@ -7,7 +7,7 @@ import frc.robot.subsystems.Shooter;
 
 public class SpinDownShooter extends CommandBase {
   private Shooter m_Shooter = Shooter.getInstance();
-  private Double startTime;
+  private double startTime;
 
   public SpinDownShooter() {
     addRequirements(m_Shooter);
@@ -15,7 +15,7 @@ public class SpinDownShooter extends CommandBase {
 
   @Override
   public void initialize() {
-    m_Shooter.setFlywheelVelocityControl(0);
+    m_Shooter.setFlywheelPercentControl(0);
     m_Shooter.setBoosterPercentControl(0);
   }
 

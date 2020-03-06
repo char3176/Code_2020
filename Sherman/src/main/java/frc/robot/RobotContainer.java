@@ -19,21 +19,31 @@ import frc.robot.commands.Harvest;
 import frc.robot.commands.ManualConveyor;
 import frc.robot.commands.ManualHarvest;
 import frc.robot.commands.ManualShooter;
+import frc.robot.commands.OscillateTurret;
 import frc.robot.commands.Sow;
+import frc.robot.commands.SpinDownShooter;
+import frc.robot.commands.SpinUpShooter;
+import frc.robot.commands.TurretToZero;
 import frc.robot.constants.DrivetrainConstants;
 import frc.robot.subsystems.Conveyor;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.Turret;
 
 public class RobotContainer {
   private Compressor m_Compressor = new Compressor();
   private Controller m_Controller = Controller.getInstance();
   private Conveyor m_Conveyor = Conveyor.getInstance();
   private Drivetrain m_Drivetrain = Drivetrain.getInstance();
+  private Turret m_Turret = Turret.getInstance();
+  private Shooter m_Shooter = Shooter.getInstance();
 
   public RobotContainer() {
     m_Compressor.start();
     m_Drivetrain.setDefaultCommand(new ArcadeDrive(() -> m_Controller.getArcadeDriveSpeed(), () -> m_Controller.getArcadeDriveRot(), () -> m_Controller.shift()));
     m_Conveyor.setDefaultCommand(new ConveyorIntake());
+    //m_Turret.setDefaultCommand(new OscillateTurret());
+    m_Shooter.setDefaultCommand(new SpinDownShooter());
     configureButtonBindings();
   }
 
@@ -47,8 +57,11 @@ public class RobotContainer {
     m_Controller.getManualConveyorButton().whenHeld(new ManualConveyor(() -> m_Controller.getManualConveyorSupplier()));
     m_Controller.getClimbButton().whenHeld(new Climb(() -> m_Controller.getClimbPercent()));
     m_Controller.getSowButton().whenHeld(new Sow());
-    m_Controller.getManualShooterButton().whenHeld(new ManualShooter(() -> m_Controller.getManualShooterFlywheel(), () -> m_Controller.getManualShooterBooster()));
+    // m_Controller.getManualShooterButton().whenHeld(new ManualShooter(() -> m_Controller.getManualShooterFlywheel(), () -> m_Controller.getManualShooterBooster()));
     //m_Controller.getManualTurretButton().whenHeld(new ManualTurret(() -> m_Controller.getManualTurretIncrease()));
+    m_Controller.getSpinDownButton().whenPressed(new SpinDownShooter());
+    m_Controller.getSpinUpButton().whenPressed(new SpinUpShooter());
+
   }
 
   public Command getAutonomousCommand() throws IOException {

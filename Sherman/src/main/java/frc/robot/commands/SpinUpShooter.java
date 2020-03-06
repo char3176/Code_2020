@@ -23,7 +23,7 @@ public class SpinUpShooter extends CommandBase {
 
   @Override
   public void execute() {
-    m_Shooter.setFlywheelPercentControl(ShooterConstants.FLYWHEEL_PERCENT_OUTPUT);
+    //m_Shooter.setFlywheelPercentControl(ShooterConstants.FLYWHEEL_PERCENT_OUTPUT);
   }
 
   @Override

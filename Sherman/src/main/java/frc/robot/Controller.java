@@ -27,7 +27,7 @@ public class Controller {
     // private final JoystickButton manualTurretButton = new JoystickButton(operator, Button.kStart.value);
     private final JoystickButton spinUpButton = new JoystickButton(operator, Button.kStart.value);
     private final JoystickButton spinDownButton = new JoystickButton(operator, Button.kBack.value);
-    private final JoystickButton shootButton = new JoystickButton(operator, Button.kY.value);
+    private final JoystickButton shootButton = new JoystickButton(operator, Button.kB.value);
 
     // getInstance function for controller
     public static Controller getInstance() {
@@ -172,5 +172,9 @@ public class Controller {
         } else {
             return false;
         }
+    }
+
+    public JoystickButton getShootButton() {
+        return shootButton;
     }
 }

@@ -20,6 +20,7 @@ import frc.robot.commands.ManualConveyor;
 import frc.robot.commands.ManualHarvest;
 import frc.robot.commands.ManualShooter;
 import frc.robot.commands.OscillateTurret;
+import frc.robot.commands.SimpleShoot;
 import frc.robot.commands.Sow;
 import frc.robot.commands.SpinDownShooter;
 import frc.robot.commands.SpinUpShooter;
@@ -51,6 +52,7 @@ public class RobotContainer {
     //High Level
     m_Controller.getHarvestButton().whenHeld(new Harvest());
     m_Controller.getBallChaseButton().whenHeld(new ChaseBall());
+    m_Controller.getShootButton().whenHeld(new SimpleShoot(() -> m_Controller.getConveyorShootUp(), () -> m_Controller.getConveyorShootDown()));
 
     //Low Level
     m_Controller.getManualHarvestButton().whenHeld(new ManualHarvest(() -> m_Controller.getManualHarvestMotorSupply(), () -> m_Controller.getManualHarvestActuate()));

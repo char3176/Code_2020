@@ -7,7 +7,7 @@ import frc.robot.subsystems.Shooter;
 
 public class SpinUpShooter extends CommandBase {
   private Shooter m_Shooter = Shooter.getInstance();
-  private Double startTime;
+  private double startTime;
 
   public SpinUpShooter() {
     addRequirements(m_Shooter);
@@ -15,13 +15,15 @@ public class SpinUpShooter extends CommandBase {
 
   @Override
   public void initialize() {
-    m_Shooter.setFlywheelVelocityControl(ShooterConstants.FLYWHEEL_VELOCITY);
-    m_Shooter.setBoosterPercentControl(1);
+    // m_Shooter.setFlywheelVelocityControl(ShooterConstants.FLYWHEEL_VELOCITY);
+    m_Shooter.setFlywheelPercentControl(ShooterConstants.FLYWHEEL_PERCENT_OUTPUT);
+    m_Shooter.setBoosterPercentControl(ShooterConstants.BOOSTER_PERCENT_OUTPUT);
     startTime = Timer.getFPGATimestamp();
   }
 
   @Override
   public void execute() {
+    //m_Shooter.setFlywheelPercentControl(ShooterConstants.FLYWHEEL_PERCENT_OUTPUT);
   }
 
   @Override

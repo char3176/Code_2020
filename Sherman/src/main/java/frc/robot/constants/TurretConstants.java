@@ -19,8 +19,8 @@ public final class TurretConstants {
 
 
     // IDs
-    public static int ROTATE_MOTOR_ID = 33;
-    public static int HALLEFFECT_SENSOR_ID = 0;
+    public static int ROTATE_MOTOR_ID = 4;
+    public static int HALLEFFECT_SENSOR_ID = 4;
 
     //LIMITS
     public static final double TURRET_PERCENT_OUTPUT = 1.0; //As a decimal

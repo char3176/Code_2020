@@ -23,8 +23,10 @@ public class Controller {
     private final JoystickButton manualConveyorButton = new JoystickButton(operator, Button.kBumperRight.value);
     private final JoystickButton harvestButton = new JoystickButton(operator, Button.kX.value);
     private final POVButton sowButton = new POVButton(operator, 180);
-    private final JoystickButton manualShooterButton = new JoystickButton(operator, Button.kBack.value);
-    private final JoystickButton manualTurretButton = new JoystickButton(operator, Button.kStart.value);
+    // private final JoystickButton manualShooterButton = new JoystickButton(operator, Button.kBack.value);
+    // private final JoystickButton manualTurretButton = new JoystickButton(operator, Button.kStart.value);
+    private final JoystickButton spinUpButton = new JoystickButton(operator, Button.kStart.value);
+    private final JoystickButton spinDownButton = new JoystickButton(operator, Button.kBack.value);
     private final JoystickButton shootButton = new JoystickButton(operator, Button.kY.value);
 
     // getInstance function for controller
@@ -128,9 +130,9 @@ public class Controller {
         return sowButton;
     }
 
-    public JoystickButton getManualShooterButton() {
-        return manualShooterButton;
-    }
+    // public JoystickButton getManualShooterButton() {
+    //     return manualShooterButton;
+    // }
 
     public double getManualShooterFlywheel() {
         return operator.getY(Hand.kRight);
@@ -140,11 +142,19 @@ public class Controller {
         return operator.getY(Hand.kLeft);
     }
 
-    public JoystickButton getManualTurretButton() {
-        return manualTurretButton;
-    }
+    // public JoystickButton getManualTurretButton() {
+    //     return manualTurretButton;
+    // }
 
     public double getManualTurretIncrease() {
         return operator.getX(Hand.kLeft);
+    }
+
+    public JoystickButton getSpinUpButton() {
+        return spinUpButton;
+    }
+
+    public JoystickButton getSpinDownButton() {
+        return spinDownButton;
     }
 }

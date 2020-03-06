@@ -123,7 +123,7 @@ public class Controller {
     }
 
     public double getClimbPercent() {
-        return operator.getY();
+        return operator.getY(Hand.kLeft);
     }
 
     public POVButton getSowButton() {
@@ -156,5 +156,21 @@ public class Controller {
 
     public JoystickButton getSpinDownButton() {
         return spinDownButton;
+    }
+
+    public boolean getConveyorShootUp() {
+        if (operator.getPOV() == 0 || operator.getPOV() == 45 || operator.getPOV() == 315) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean getConveyorShootDown() {
+        if (operator.getPOV() == 135 || operator.getPOV() == 180 || operator.getPOV() == 225) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

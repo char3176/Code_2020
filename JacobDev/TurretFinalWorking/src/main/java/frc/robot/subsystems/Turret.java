@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -17,10 +18,10 @@ public class Turret extends SubsystemBase {
     private static Turret instance = new Turret();
 
     //Sensors
-    private DigitalInput hallEffect = new DigitalInput(4);
-    private TalonSRX rotateMotor = new TalonSRX(4); //Might be (port) 12    
-    private VictorSP boosterMotor = new VictorSP(0);
-    private WPI_TalonFX flywheelMotor = new WPI_TalonFX(5);
+    private DigitalInput hallEffect = new DigitalInput(TurretConstants.HALL_ID);
+    private TalonSRX rotateMotor = new TalonSRX(TurretConstants.ROTATE_ID);  
+    private VictorSP boosterMotor = new VictorSP(TurretConstants.BOOSTER_ID);
+    private WPI_TalonFX flywheelMotor = new WPI_TalonFX(TurretConstants.FLYWHEEL_ID);
 
     //Measured in Degrees
     private double minPos = -88.0; //-88
@@ -36,6 +37,10 @@ public class Turret extends SubsystemBase {
 
     public Turret() {}
 
+    public static Turret getInstance() {
+        return instance;
+    }
+
     @Override
     public void periodic() {
         isOnHallEffect();
@@ -49,10 +54,6 @@ public class Turret extends SubsystemBase {
 
     public void setBoosterOutput(double percent) {
       boosterMotor.set(percent);
-    }
-
-    public static Turret getInstance() {
-        return instance;
     }
 
     public double getTurretPosition() {

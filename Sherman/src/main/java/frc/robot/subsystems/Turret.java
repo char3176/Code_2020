@@ -18,7 +18,6 @@ public class Turret extends SubsystemBase {
     private DigitalInput hallEffect = new DigitalInput(TurretConstants.HALLEFFECT_SENSOR_ID);
     private TalonSRX rotateMotor = new TalonSRX(TurretConstants.ROTATE_MOTOR_ID); //Might be (port) 12    
     //private TalonSRX boosterMotor = new TalonSRX(22);
-    //private WPI_TalonFX flywheelMotor = new WPI_TalonFX(11);
 
     //Measured in Degrees
     private double minPos = -88.0; //-88

@@ -19,39 +19,64 @@ import frc.robot.commands.Harvest;
 import frc.robot.commands.ManualConveyor;
 import frc.robot.commands.ManualHarvest;
 import frc.robot.commands.ManualShooter;
+import frc.robot.commands.NeutralClimb;
+import frc.robot.commands.NeutralHarvest;
+import frc.robot.commands.NeutralShooter;
+import frc.robot.commands.NeutralTurret;
 import frc.robot.commands.OscillateTurret;
 import frc.robot.commands.SimpleShoot;
 import frc.robot.commands.Sow;
 import frc.robot.commands.SpinDownShooter;
 import frc.robot.commands.SpinUpShooter;
 import frc.robot.commands.TurretToZero;
+import frc.robot.commands.TwoSecondDrive;
 import frc.robot.constants.DrivetrainConstants;
+import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.Conveyor;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Harvester;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.Turret;
 
 public class RobotContainer {
-  private Compressor m_Compressor = new Compressor();
-  private Controller m_Controller = Controller.getInstance();
-  private Conveyor m_Conveyor = Conveyor.getInstance();
-  private Drivetrain m_Drivetrain = Drivetrain.getInstance();
-  private Turret m_Turret = Turret.getInstance();
-  private Shooter m_Shooter = Shooter.getInstance();
+  private Compressor m_Compressor;
+
+  private Climber m_Climber;
+  private Controller m_Controller;
+  private Conveyor m_Conveyor;
+  private Drivetrain m_Drivetrain;
+  private Harvester m_Harvester;
+  private Shooter m_Shooter;
+  private Turret m_Turret;
+  private VisionClient m_VisionClient;
 
   public RobotContainer() {
+    m_Compressor = new Compressor();
     m_Compressor.start();
-    m_Drivetrain.setDefaultCommand(new ArcadeDrive(() -> m_Controller.getArcadeDriveSpeed(), () -> m_Controller.getArcadeDriveRot(), () -> m_Controller.shift()));
+
+    m_Climber = Climber.getInstance();
+    m_Controller = Controller.getInstance();
+    m_Conveyor = Conveyor.getInstance();
+    m_Drivetrain = Drivetrain.getInstance();
+    m_Harvester = Harvester.getInstance();
+    m_Shooter = Shooter.getInstance();
+    m_Turret = Turret.getInstance();
+    m_VisionClient = VisionClient.getInstance();
+
+    m_Climber.setDefaultCommand(new NeutralClimb());
     m_Conveyor.setDefaultCommand(new ConveyorIntake());
-    //m_Turret.setDefaultCommand(new OscillateTurret());
-    // m_Shooter.setDefaultCommand(new SpinDownShooter());
+    m_Drivetrain.setDefaultCommand(new ArcadeDrive(() -> m_Controller.getArcadeDriveSpeed(), () -> m_Controller.getArcadeDriveRot(), () -> m_Controller.shift()));
+    m_Harvester.setDefaultCommand(new NeutralHarvest());
+    // m_Shooter.setDefaultCommand(new NeutralShooter());
+    m_Turret.setDefaultCommand(new NeutralTurret());
+
     configureButtonBindings();
   }
 
   private void configureButtonBindings() {
     //High Level
     m_Controller.getHarvestButton().whenHeld(new Harvest());
-    m_Controller.getBallChaseButton().whenHeld(new ChaseBall());
+    // m_Controller.getBallChaseButton().whenHeld(new ChaseBall());
     m_Controller.getShootButton().whenHeld(new SimpleShoot(() -> m_Controller.getConveyorShootUp(), () -> m_Controller.getConveyorShootDown()));
 
     //Low Level
@@ -63,15 +88,9 @@ public class RobotContainer {
     //m_Controller.getManualTurretButton().whenHeld(new ManualTurret(() -> m_Controller.getManualTurretIncrease()));
     m_Controller.getSpinDownButton().whenPressed(new SpinDownShooter());
     m_Controller.getSpinUpButton().whenPressed(new SpinUpShooter());
-
   }
 
-  public Command getAutonomousCommand() throws IOException {
-    Trajectory m_Trajectory;
-    String trajectoryJSON = "paths/output/Unnamed.wpilib.json";
-    Path trajectoryPath = Filesystem.getDeployDirectory().toPath().resolve(trajectoryJSON);
-    m_Trajectory = TrajectoryUtil.fromPathweaverJson(trajectoryPath);
-    RamseteCommand m_RamseteCommand = new RamseteCommand(m_Trajectory, () -> m_Drivetrain.getCurrentPose(), new RamseteController(), m_Drivetrain.getKinematics(), m_Drivetrain::setSpeedsDouble, m_Drivetrain);
-    return m_RamseteCommand;
+  public Command getAutonomousCommand() {
+    return new TwoSecondDrive();
   }
 }

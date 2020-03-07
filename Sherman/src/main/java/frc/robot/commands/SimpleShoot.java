@@ -22,12 +22,14 @@ public class SimpleShoot extends CommandBase {
   @Override
   public void initialize() {
     m_Shooter.setBoosterPercentControl(1);
-    m_Shooter.setFlywheelPercentControl(1);
+    // m_Shooter.setFlywheelPercentControl(1);
   }
 
   @Override
   public void execute() {
-    m_Shooter.setFlywheelPercentControl(1);
+    // m_Shooter.setFlywheelPercentControl(1);
+    m_Shooter.setBoosterPercentControl(1);
+    
     if (upSupplier.getAsBoolean()) {
       m_Conveyor.setPercentControl(.3);
     } else if (downSupplier.getAsBoolean()) {
@@ -40,7 +42,7 @@ public class SimpleShoot extends CommandBase {
   @Override
   public void end(boolean interrupted) {
     m_Conveyor.setPercentControl(0);
-    m_Shooter.setFlywheelPercentControl(0);
+    // m_Shooter.setFlywheelPercentControl(0);
     m_Shooter.setBoosterPercentControl(0);
   }
 

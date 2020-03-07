@@ -11,22 +11,12 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 
 public class ConveyorIntake extends CommandBase {
   private Conveyor m_Conveyor = Conveyor.getInstance();
-  // private Harvester m_Harvester = Harvester.getInstance();
-
-  // private double intake_speed = 0.25;
-
+  
   private boolean inletBallDetected = false;
   private boolean done = false;
   public Timestamp calltime;
 
-  /**
-   * Creates a new ConveyorIntake.
-   */
   public ConveyorIntake() {
-    // Use addRequirements() here to declare subsystem dependencies.
-    // Date date = new Date();
-    // long time = date.getTime();
-    // calltime = new Timestamp(time);
     addRequirements(m_Conveyor);
   }
 

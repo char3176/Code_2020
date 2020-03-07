@@ -84,7 +84,7 @@ public class RobotContainer {
     m_Controller.getManualHarvestButton().whenHeld(new ManualHarvest(() -> m_Controller.getManualHarvestMotorSupply(), () -> m_Controller.getManualHarvestActuate()));
     m_Controller.getManualConveyorButton().whenHeld(new ManualConveyor(() -> m_Controller.getManualConveyorSupplier()));
     m_Controller.getClimbButton().whenHeld(new AdvancedClimb(() -> m_Controller.getClimbPercent()));
-    //m_Controller.getSowButton().whenHeld(new Sow());
+    m_Controller.getSowButton().whenHeld(new Sow());
     // m_Controller.getManualShooterButton().whenHeld(new ManualShooter(() -> m_Controller.getManualShooterFlywheel(), () -> m_Controller.getManualShooterBooster()));
     //m_Controller.getManualTurretButton().whenHeld(new ManualTurret(() -> m_Controller.getManualTurretIncrease()));
     m_Controller.getSpinDownButton().whenPressed(new SpinDownShooter());

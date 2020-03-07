@@ -21,12 +21,13 @@ public class Controller {
     private final JoystickButton manualHarvestButton = new JoystickButton(operator, Button.kBumperLeft.value);
     private final JoystickButton manualConveyorButton = new JoystickButton(operator, Button.kBumperRight.value);
     private final JoystickButton harvestButton = new JoystickButton(operator, Button.kX.value);
-    private final POVButton sowButton = new POVButton(operator, 180);
+    //private final POVButton sowButton = new POVButton(operator, 180);
     // private final JoystickButton manualShooterButton = new JoystickButton(operator, Button.kBack.value);
     // private final JoystickButton manualTurretButton = new JoystickButton(operator, Button.kStart.value);
     private final JoystickButton spinUpButton = new JoystickButton(operator, Button.kStart.value);
     private final JoystickButton spinDownButton = new JoystickButton(operator, Button.kBack.value);
     private final JoystickButton shootButton = new JoystickButton(operator, Button.kB.value);
+    private final JoystickButton sowButton = new JoystickButton(operator, Button.kY.value);
 
     // getInstance function for controller
     public static Controller getInstance() {
@@ -125,7 +126,7 @@ public class Controller {
         return operator.getY(Hand.kLeft);
     }
 
-    public POVButton getSowButton() {
+    public JoystickButton getSowButton() {
         return sowButton;
     }
 

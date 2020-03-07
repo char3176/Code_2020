@@ -20,7 +20,7 @@ public class TwoSecondDrive extends CommandBase {
 
   @Override
   public void execute() {
-    m_Drivetrain.drive(new ChassisSpeeds(0.5, 0.0, 0.0));
+    m_Drivetrain.drive(new ChassisSpeeds(-0.5, 0.0, 0.0));
   }
 
   @Override

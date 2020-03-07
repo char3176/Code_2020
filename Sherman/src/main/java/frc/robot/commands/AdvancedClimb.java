@@ -2,6 +2,7 @@ package frc.robot.commands;
 
 import java.util.function.DoubleSupplier;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Climber;
 import frc.robot.constants.ClimberConstants;
@@ -10,10 +11,7 @@ public class AdvancedClimb extends CommandBase {
   private Climber m_Climber = Climber.getInstance();
   private DoubleSupplier supplier;
 
-  private boolean currentTop;
-  private boolean lastTop;
-  private boolean currentBottom;
-  private boolean lastBottom;
+  private double currentClimbHeight;
 
   public AdvancedClimb(DoubleSupplier supplier) {
     this.supplier = supplier;
@@ -22,19 +20,28 @@ public class AdvancedClimb extends CommandBase {
 
   @Override
   public void initialize() {
-    currentTop = m_Climber.getTopLimit();
-    currentBottom = m_Climber.getBottomLimit();
+    currentClimbHeight = m_Climber.getPostition();
   }
 
   @Override
   public void execute() {
-    lastTop = currentTop;
-    currentTop = m_Climber.getTopLimit();
-    lastBottom = currentBottom;
-    currentBottom = m_Climber.getBottomLimit();
+    //Update SD
+    currentClimbHeight = m_Climber.getPostition();
+    SmartDashboard.putNumber("Climb encoder(tics)", currentClimbHeight);
 
-    if(currentBottom) {
+    //Zero if we're at the bottom limit switch 
+    if(!m_Climber.getBottomLimit()) {
       m_Climber.resetEncoder();
+    }
+    
+    //Don't let the driver go past the switches
+    if(!m_Climber.getTopLimit() && supplier.getAsDouble() < 0) {
+      m_Climber.setPercentControl(supplier.getAsDouble());
+    } 
+    else if(!m_Climber.getBottomLimit() && supplier.getAsDouble() > 0) {
+      m_Climber.setPercentControl(supplier.getAsDouble());
+    } else {
+      m_Climber.setPercentControl(0.0);
     }
     /*
     if ((!m_Climber.getTopLimit() && supplier.getAsDouble() < 0) || (!m_Climber.getBottomLimit() && supplier.getAsDouble() > 0)) {

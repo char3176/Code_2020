@@ -3,6 +3,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import edu.wpi.first.wpilibj.VictorSP;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.constants.ShooterConstants;
@@ -11,7 +12,7 @@ public class Shooter extends SubsystemBase {
   private static Shooter instance = new Shooter();
 
   public TalonFX flywheel = new TalonFX(ShooterConstants.FLYWHEEL_ID);
-  public TalonSRX booster = new TalonSRX(ShooterConstants.BOOSTER_ID);
+  public VictorSP booster = new VictorSP(ShooterConstants.BOOSTER_ID);
 
   public Shooter() {
     flywheel.config_kP(0, ShooterConstants.FLYWHEEL_P);
@@ -32,10 +33,11 @@ public class Shooter extends SubsystemBase {
   }
   
   public void setBoosterPercentControl(double percent) {
-    booster.set(ControlMode.PercentOutput, percent);
+    //booster.set(ControlMode.PercentOutput, percent);
+    booster.set(percent);
   }
 
   public double getFlywheelSpeed(){
-    return flywheel.getSelectedSensorVelocity(0);
+    return flywheel.getSelectedSensorVelocity();
   }
 }

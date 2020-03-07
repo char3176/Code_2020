@@ -13,8 +13,6 @@ public class Climber extends SubsystemBase {
   private static Climber instance = new Climber();
 
   private CANSparkMax motor= new CANSparkMax(ClimberConstants.MOTOR_ID, MotorType.kBrushless);
-  // private CANEncoder encoder = motor.getEncoder();
-  // private DoubleSolenoid piston = new DoubleSolenoid(ClimberConstants.PISTON_ID_1, ClimberConstants.PISTON_ID_2);
 
   public Climber() {
     motor.restoreFactoryDefaults();

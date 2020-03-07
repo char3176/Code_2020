@@ -27,22 +27,22 @@ public class OscillateTurret extends CommandBase {
   @Override
   public void execute() {
     if(isTurningRight) {
-      //Go to the maxPos
-      turret.setTurretPosition(turret.getMaxPos());
-      //Turret is less than the maxPos so turn around
-      if(turret.getTurretAngle() > (turret.getMaxPos() - 5.0)) {
-        isTurningRight = false;
+        //Go to the maxPos
+        turret.setTurretPosition(turret.getMaxPos());
+        //Turret is less than the maxPos so turn around
+        if(turret.getTurretAngle() > (turret.getMaxPos() - 5.0)) {
+            isTurningRight = false;
+        }
     } else {    
-      //Go to the minPos
-      turret.setTurretPosition(turret.getMinPos());
-      //Turret is greater than the minPos so turn around
-      if(turret.getTurretAngle() < (turret.getMinPos() + 5.0)) {
-        isTurningRight = true;
-      }
-    turret.calibratePosition();
+        //Go to the minPos
+        turret.setTurretPosition(turret.getMinPos());
+        //Turret is greater than the minPos so turn around
+        if(turret.getTurretAngle() < (turret.getMinPos() + 5.0)) {
+            isTurningRight = true;
+        }
     }
+    turret.calibratePosition();
   }
-}
 
   @Override
   public void end(boolean interrupted) {

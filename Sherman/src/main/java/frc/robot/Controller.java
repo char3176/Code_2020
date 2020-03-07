@@ -23,9 +23,11 @@ public class Controller {
     private final JoystickButton manualConveyorButton = new JoystickButton(operator, Button.kBumperRight.value);
     private final JoystickButton harvestButton = new JoystickButton(operator, Button.kX.value);
     private final POVButton sowButton = new POVButton(operator, 180);
-    private final JoystickButton manualShooterButton = new JoystickButton(operator, Button.kBack.value);
-    private final JoystickButton manualTurretButton = new JoystickButton(operator, Button.kStart.value);
-    private final JoystickButton shootButton = new JoystickButton(operator, Button.kY.value);
+    // private final JoystickButton manualShooterButton = new JoystickButton(operator, Button.kBack.value);
+    // private final JoystickButton manualTurretButton = new JoystickButton(operator, Button.kStart.value);
+    private final JoystickButton spinUpButton = new JoystickButton(operator, Button.kStart.value);
+    private final JoystickButton spinDownButton = new JoystickButton(operator, Button.kBack.value);
+    private final JoystickButton shootButton = new JoystickButton(operator, Button.kB.value);
 
     // getInstance function for controller
     public static Controller getInstance() {
@@ -121,16 +123,16 @@ public class Controller {
     }
 
     public double getClimbPercent() {
-        return operator.getY();
+        return operator.getY(Hand.kLeft);
     }
 
     public POVButton getSowButton() {
         return sowButton;
     }
 
-    public JoystickButton getManualShooterButton() {
-        return manualShooterButton;
-    }
+    // public JoystickButton getManualShooterButton() {
+    //     return manualShooterButton;
+    // }
 
     public double getManualShooterFlywheel() {
         return operator.getY(Hand.kRight);
@@ -140,11 +142,39 @@ public class Controller {
         return operator.getY(Hand.kLeft);
     }
 
-    public JoystickButton getManualTurretButton() {
-        return manualTurretButton;
-    }
+    // public JoystickButton getManualTurretButton() {
+    //     return manualTurretButton;
+    // }
 
     public double getManualTurretIncrease() {
         return operator.getX(Hand.kLeft);
+    }
+
+    public JoystickButton getSpinUpButton() {
+        return spinUpButton;
+    }
+
+    public JoystickButton getSpinDownButton() {
+        return spinDownButton;
+    }
+
+    public boolean getConveyorShootUp() {
+        if (operator.getPOV() == 0 || operator.getPOV() == 45 || operator.getPOV() == 315) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean getConveyorShootDown() {
+        if (operator.getPOV() == 135 || operator.getPOV() == 180 || operator.getPOV() == 225) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public JoystickButton getShootButton() {
+        return shootButton;
     }
 }

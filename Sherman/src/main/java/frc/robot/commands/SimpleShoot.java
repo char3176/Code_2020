@@ -27,6 +27,7 @@ public class SimpleShoot extends CommandBase {
 
   @Override
   public void execute() {
+    m_Shooter.setFlywheelPercentControl(1);
     if (upSupplier.getAsBoolean()) {
       m_Conveyor.setPercentControl(.3);
     } else if (downSupplier.getAsBoolean()) {

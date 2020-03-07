@@ -36,12 +36,12 @@ public class AdvancedClimb extends CommandBase {
     
     //Don't let the driver go past the switches
     if(!m_Climber.getTopLimit() && supplier.getAsDouble() < 0) {
-      m_Climber.setPercentControl(supplier.getAsDouble());
+      m_Climber.setPercentControl(0.0);
     } 
     else if(!m_Climber.getBottomLimit() && supplier.getAsDouble() > 0) {
-      m_Climber.setPercentControl(supplier.getAsDouble());
-    } else {
       m_Climber.setPercentControl(0.0);
+    } else {
+      m_Climber.setPercentControl(supplier.getAsDouble());
     }
     /*
     if ((!m_Climber.getTopLimit() && supplier.getAsDouble() < 0) || (!m_Climber.getBottomLimit() && supplier.getAsDouble() > 0)) {

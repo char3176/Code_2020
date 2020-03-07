@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.trajectory.TrajectoryConfig;
 import edu.wpi.first.wpilibj.trajectory.TrajectoryUtil;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RamseteCommand;
+import frc.robot.commands.AdvancedClimb;
 import frc.robot.commands.ArcadeDrive;
 import frc.robot.commands.ChaseBall;
 import frc.robot.commands.SimpleClimb;
@@ -82,7 +83,7 @@ public class RobotContainer {
     //Low Level
     m_Controller.getManualHarvestButton().whenHeld(new ManualHarvest(() -> m_Controller.getManualHarvestMotorSupply(), () -> m_Controller.getManualHarvestActuate()));
     m_Controller.getManualConveyorButton().whenHeld(new ManualConveyor(() -> m_Controller.getManualConveyorSupplier()));
-    m_Controller.getClimbButton().whenHeld(new SimpleClimb(() -> m_Controller.getClimbPercent()));
+    m_Controller.getClimbButton().whenHeld(new AdvancedClimb(() -> m_Controller.getClimbPercent()));
     m_Controller.getSowButton().whenHeld(new Sow());
     // m_Controller.getManualShooterButton().whenHeld(new ManualShooter(() -> m_Controller.getManualShooterFlywheel(), () -> m_Controller.getManualShooterBooster()));
     //m_Controller.getManualTurretButton().whenHeld(new ManualTurret(() -> m_Controller.getManualTurretIncrease()));

@@ -31,4 +31,11 @@ public final class TurretConstants {
     //ENCODDER CONSTANTS
     public static final double ENCODER_TICKS_PER_REVOLUTION = 4096.0;
     public static final double REVOLUTIONS_PER_ENCODER_TICK = 1.0 / 4096.0;
+
+    //CAN/DIO IDS
+    public static final int HALL_ID = 4; //DIO
+    public static final int FLYWHEEL_ID = 5; //CAN
+    public static final int ROTATE_ID = 4; //CAN
+    public static final int BOOSTER_ID = 0; //PWM
+
 }

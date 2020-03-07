@@ -8,7 +8,7 @@ public class TurretToZero extends CommandBase {
 
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
 
-  private final Turret turret = Turret.getInstance();
+  private Turret turret = Turret.getInstance();
 
   public TurretToZero() { 
     addRequirements(turret);

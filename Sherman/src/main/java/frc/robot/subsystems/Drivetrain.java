@@ -70,8 +70,10 @@ public class Drivetrain extends SubsystemBase {
     gyro.reset();
     odometry = new DifferentialDriveOdometry(getAngle());
     rightMaster.setInverted(true);
-    rightShifter.set(Value.kReverse);
-    leftShifter.set(Value.kReverse);
+    //rightShifter.set(Value.kReverse);
+    //leftShifter.set(Value.kReverse);
+    rightShifter.set(Value.kForward);
+    leftShifter.set(Value.kForward);
     rightFollower.follow(rightFollower);
     leftFollower.follow(leftMaster);
   }
@@ -80,6 +82,7 @@ public class Drivetrain extends SubsystemBase {
   public void periodic() {
     updateOdometry();
     printOdometry();
+    getInHighGear();
   }
 
   public static Drivetrain getInstance() {
@@ -191,6 +194,7 @@ public class Drivetrain extends SubsystemBase {
   }
 
   public boolean getInHighGear() {
+    SmartDashboard.putBoolean("Gear", !inHighGear);
     return inHighGear;
   }
 

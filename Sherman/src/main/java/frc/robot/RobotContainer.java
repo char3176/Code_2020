@@ -29,6 +29,7 @@ import frc.robot.commands.SimpleShoot;
 import frc.robot.commands.Sow;
 import frc.robot.commands.SpinDownShooter;
 import frc.robot.commands.SpinUpShooter;
+import frc.robot.commands.ThreeSecondDriveAndShoot;
 import frc.robot.commands.TurretToZero;
 import frc.robot.commands.TwoSecondDrive;
 import frc.robot.constants.DrivetrainConstants;
@@ -92,6 +93,6 @@ public class RobotContainer {
   }
 
   public Command getAutonomousCommand() {
-    return new TwoSecondDrive();
+    return new ThreeSecondDriveAndShoot();
   }
 }

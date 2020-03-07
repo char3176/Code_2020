@@ -52,11 +52,11 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
-    if (m_Controller.getShootButton().get()) {
-      m_Shooter.setFlywheelPercentControl(1);
-    } else {
-      m_Shooter.setFlywheelPercentControl(0);
-    }
+    // if (m_Controller.getShootButton().get()) {
+    //   m_Shooter.setFlywheelPercentControl(1);
+    // } else {
+    //   m_Shooter.setFlywheelPercentControl(0);
+    // }
   }
 
   @Override

@@ -67,7 +67,7 @@ public class RobotContainer {
     m_Conveyor.setDefaultCommand(new ConveyorIntake());
     m_Drivetrain.setDefaultCommand(new ArcadeDrive(() -> m_Controller.getArcadeDriveSpeed(), () -> m_Controller.getArcadeDriveRot(), () -> m_Controller.shift()));
     m_Harvester.setDefaultCommand(new NeutralHarvest());
-    // m_Shooter.setDefaultCommand(new NeutralShooter());
+    m_Shooter.setDefaultCommand(new NeutralShooter());
     m_Turret.setDefaultCommand(new NeutralTurret());
 
     configureButtonBindings();

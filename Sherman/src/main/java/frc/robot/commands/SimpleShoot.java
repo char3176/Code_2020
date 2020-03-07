@@ -16,18 +16,18 @@ public class SimpleShoot extends CommandBase {
   public SimpleShoot(BooleanSupplier upSupplier, BooleanSupplier downSupplier) {
     this.upSupplier = upSupplier;
     this.downSupplier = downSupplier;
-    addRequirements(m_Conveyor, m_Shooter);
+    addRequirements(m_Conveyor);
   }
 
   @Override
   public void initialize() {
     m_Shooter.setBoosterPercentControl(1);
-    // m_Shooter.setFlywheelPercentControl(1);
+    m_Shooter.setFlywheelPercentControl(1);
   }
 
   @Override
   public void execute() {
-    // m_Shooter.setFlywheelPercentControl(1);
+    m_Shooter.setFlywheelPercentControl(1);
     m_Shooter.setBoosterPercentControl(1);
     
     if (upSupplier.getAsBoolean()) {
@@ -42,7 +42,7 @@ public class SimpleShoot extends CommandBase {
   @Override
   public void end(boolean interrupted) {
     m_Conveyor.setPercentControl(0);
-    // m_Shooter.setFlywheelPercentControl(0);
+    m_Shooter.setFlywheelPercentControl(0);
     m_Shooter.setBoosterPercentControl(0);
   }
 

@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj.trajectory.TrajectoryConfig;
 import edu.wpi.first.wpilibj.trajectory.TrajectoryUtil;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RamseteCommand;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.AdvancedClimb;
 import frc.robot.commands.ArcadeDrive;
 import frc.robot.commands.ChaseBall;
@@ -51,6 +53,10 @@ public class RobotContainer {
   private Shooter m_Shooter;
   private Turret m_Turret;
   private VisionClient m_VisionClient;
+  private SendableChooser<String> m_autonChooser;
+
+  private static final String auto1 = "auto1";
+  private static final String auto2 = "auto2";
 
   public RobotContainer() {
     m_Compressor = new Compressor();
@@ -64,6 +70,11 @@ public class RobotContainer {
     m_Shooter = Shooter.getInstance();
     m_Turret = Turret.getInstance();
     m_VisionClient = VisionClient.getInstance();
+    m_autonChooser = new SendableChooser<>();
+
+    m_autonChooser.addOption("2 Second Drive", auto1);
+    m_autonChooser.addOption("3 Second Drive And Shoot", auto2);
+    SmartDashboard.putData("Auton Chooser", m_autonChooser);
 
     m_Climber.setDefaultCommand(new NeutralClimb());
     m_Conveyor.setDefaultCommand(new ConveyorIntake());

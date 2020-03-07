@@ -22,12 +22,12 @@ public class SimpleShoot extends CommandBase {
   @Override
   public void initialize() {
     m_Shooter.setBoosterPercentControl(1);
-    m_Shooter.setFlywheelPercentControl(1);
+    m_Shooter.setFlywheelPercentControl(.8);
   }
 
   @Override
   public void execute() {
-    m_Shooter.setFlywheelPercentControl(1);
+    m_Shooter.setFlywheelPercentControl(.8);
     m_Shooter.setBoosterPercentControl(1);
     
     if (upSupplier.getAsBoolean()) {

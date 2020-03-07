@@ -76,6 +76,10 @@ public class Drivetrain extends SubsystemBase {
     leftShifter.set(Value.kForward);
     rightFollower.follow(rightFollower);
     leftFollower.follow(leftMaster);
+    //rightMaster.configOpenloopRamp(DrivetrainConstants.OPEN_LOOP_RAMP_RATE);
+    //rightFollower.configOpenloopRamp(DrivetrainConstants.OPEN_LOOP_RAMP_RATE);
+    //leftMaster.configOpenloopRamp(DrivetrainConstants.OPEN_LOOP_RAMP_RATE);
+    //leftFollower.configOpenloopRamp(DrivetrainConstants.OPEN_LOOP_RAMP_RATE);
   }
 
   @Override

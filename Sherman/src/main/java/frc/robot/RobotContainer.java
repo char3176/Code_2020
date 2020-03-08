@@ -71,10 +71,10 @@ public class RobotContainer {
     m_Turret = Turret.getInstance();
     m_VisionClient = VisionClient.getInstance();
 
-    m_autonChooser = new SendableChooser<>();
-    m_autonChooser.addOption("2 Second Drive", auto1);
-    m_autonChooser.addOption("3 Second Drive And Shoot", auto2);
-    SmartDashboard.putData("Auton Chooser", m_autonChooser);
+    //m_autonChooser = new SendableChooser<>();
+    //m_autonChooser.addOption("2 Second Drive", auto1);
+    //m_autonChooser.addOption("3 Second Drive And Shoot", auto2);
+    //SmartDashboard.putData("Auton Chooser", m_autonChooser);
 
     m_Climber.setDefaultCommand(new NeutralClimb());
     m_Conveyor.setDefaultCommand(new ConveyorIntake());
@@ -104,10 +104,6 @@ public class RobotContainer {
   }
 
   public Command getAutonomousCommand() {
-    Command command;
-    if(m_autonChooser.getSelected().equals("auto1")) {
-      return 
-    }
-    m_autonChooser.getSelected();
+    return new ThreeSecondDriveAndShoot();
   }
 }

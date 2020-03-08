@@ -22,21 +22,21 @@ public class ThreeSecondDriveAndShoot extends CommandBase {
   @Override
   public void initialize() {
     startTime = Timer.getFPGATimestamp();
-    m_Shooter.setBoosterPercentControl(0);
-    m_Shooter.setFlywheelPercentControl(0);
+    m_Shooter.setBoosterPercentControl(1.0);
+    m_Shooter.setFlywheelPercentControl(0.8);
   }  
 
   @Override
   public void execute() {
     //if under 3 seconds
-    if(Timer.getFPGATimestamp() < startTime + 3.0) {
+    m_Shooter.setBoosterPercentControl(0.8);
+    m_Shooter.setFlywheelPercentControl(1);
+    if(Timer.getFPGATimestamp() < startTime + 3.5) {
         m_Drivetrain.drive(new ChassisSpeeds(-0.5, 0.0, 0.0));
-    } else if(Timer.getFPGATimestamp() < startTime + 3.0 + ShooterConstants.FLYWHEEL_SPINUP_TIME) {
-        m_Shooter.setBoosterPercentControl(1);
-        m_Shooter.setFlywheelPercentControl(0.8);
-    } else if(Timer.getFPGATimestamp() < startTime + 3.0 + ShooterConstants.FLYWHEEL_SPINUP_TIME + ConveyorConstants.SHOOT_TIME) {
-        m_Conveyor.setPercentControl(.3);
-    } 
+    } else {
+        m_Drivetrain.drive(new ChassisSpeeds(0.0, 0.0, 0.0));
+        m_Conveyor.setPercentControl(0.3);
+    }
   }
 
   @Override
@@ -49,7 +49,7 @@ public class ThreeSecondDriveAndShoot extends CommandBase {
 
   @Override
   public boolean isFinished() {
-    if(Timer.getFPGATimestamp() < startTime + 3.0 + ShooterConstants.FLYWHEEL_SPINUP_TIME + ConveyorConstants.SHOOT_TIME + 5) {
+    if(Timer.getFPGATimestamp() > startTime + 12) {
       return true;
     } else {
       return false;

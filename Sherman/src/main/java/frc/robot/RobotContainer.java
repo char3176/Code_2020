@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj.trajectory.TrajectoryConfig;
 import edu.wpi.first.wpilibj.trajectory.TrajectoryUtil;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RamseteCommand;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.AdvancedClimb;
 import frc.robot.commands.ArcadeDrive;
 import frc.robot.commands.ChaseBall;
@@ -29,6 +31,7 @@ import frc.robot.commands.SimpleShoot;
 import frc.robot.commands.Sow;
 import frc.robot.commands.SpinDownShooter;
 import frc.robot.commands.SpinUpShooter;
+import frc.robot.commands.ThreeSecondDriveAndShoot;
 import frc.robot.commands.TurretToZero;
 import frc.robot.commands.TwoSecondDrive;
 import frc.robot.constants.DrivetrainConstants;
@@ -51,6 +54,10 @@ public class RobotContainer {
   private Turret m_Turret;
   private VisionClient m_VisionClient;
 
+  private SendableChooser<String> m_autonChooser;
+  private static final String auto1 = "auto1";
+  private static final String auto2 = "auto2";
+
   public RobotContainer() {
     m_Compressor = new Compressor();
     m_Compressor.start();
@@ -63,6 +70,11 @@ public class RobotContainer {
     m_Shooter = Shooter.getInstance();
     m_Turret = Turret.getInstance();
     m_VisionClient = VisionClient.getInstance();
+
+    //m_autonChooser = new SendableChooser<>();
+    //m_autonChooser.addOption("2 Second Drive", auto1);
+    //m_autonChooser.addOption("3 Second Drive And Shoot", auto2);
+    //SmartDashboard.putData("Auton Chooser", m_autonChooser);
 
     m_Climber.setDefaultCommand(new NeutralClimb());
     m_Conveyor.setDefaultCommand(new ConveyorIntake());
@@ -92,6 +104,6 @@ public class RobotContainer {
   }
 
   public Command getAutonomousCommand() {
-    return new TwoSecondDrive();
+    return new ThreeSecondDriveAndShoot();
   }
 }

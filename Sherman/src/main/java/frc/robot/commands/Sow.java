@@ -15,14 +15,14 @@ public class Sow extends CommandBase {
 
   @Override
   public void initialize() {
-    m_Harvester.setPercentControl(-HarvesterConstants.HARVEST_PERCENT);
-    m_Conveyor.setPercentControl(-0.4);
+    m_Harvester.setPercentControl(1);
+    m_Conveyor.setPercentControl(-0.45);
   }
 
   @Override
   public void execute() {
-    m_Harvester.setPercentControl(-HarvesterConstants.HARVEST_PERCENT);
-    m_Conveyor.setPercentControl(-0.4);
+    m_Harvester.setPercentControl(1);
+    m_Conveyor.setPercentControl(-0.45);
   }
 
   @Override

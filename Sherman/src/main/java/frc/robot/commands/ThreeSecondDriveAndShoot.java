@@ -23,15 +23,15 @@ public class ThreeSecondDriveAndShoot extends CommandBase {
   public void initialize() {
     startTime = Timer.getFPGATimestamp();
     m_Shooter.setBoosterPercentControl(1.0);
-    m_Shooter.setFlywheelPercentControl(0.8);
+    m_Shooter.setFlywheelPercentControl(0.7);
   }  
 
   @Override
   public void execute() {
     //if under 3 seconds
-    m_Shooter.setBoosterPercentControl(0.8);
-    m_Shooter.setFlywheelPercentControl(1);
-    if(Timer.getFPGATimestamp() < startTime + 3.5) {
+    m_Shooter.setBoosterPercentControl(1.0);
+    m_Shooter.setFlywheelPercentControl(0.7);
+    if(Timer.getFPGATimestamp() < startTime + 3) {
         m_Drivetrain.drive(new ChassisSpeeds(-0.5, 0.0, 0.0));
     } else {
         m_Drivetrain.drive(new ChassisSpeeds(0.0, 0.0, 0.0));

@@ -42,7 +42,7 @@ public class ConveyorIntake extends CommandBase {
           inletBallDetected = true;
 
           // m_Conveyor.setMotionMagic(10);
-          m_Conveyor.setPercentControl(.15);
+          m_Conveyor.setPercentControl(.2);
           // m_Harvester.setPercentControl(.25);
         }
       }

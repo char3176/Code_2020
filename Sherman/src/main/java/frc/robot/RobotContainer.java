@@ -74,11 +74,18 @@ public class RobotContainer {
     m_Turret = Turret.getInstance();
     m_VisionClient = VisionClient.getInstance();
 
+<<<<<<< HEAD
     m_autonChooser = new SendableChooser<>();
     m_autonChooser.addOption("2 Second Drive", auto1);
     m_autonChooser.addOption("3 Second Drive And Shoot", auto2);
     m_autonChooser.addOption("Far Shoot and Drive", auto3);
     SmartDashboard.putData("Auton Chooser", m_autonChooser);
+=======
+    //m_autonChooser = new SendableChooser<>();
+    //m_autonChooser.addOption("2 Second Drive", auto1);
+    //m_autonChooser.addOption("3 Second Drive And Shoot", auto2);
+    //SmartDashboard.putData("Auton Chooser", m_autonChooser);
+>>>>>>> 778ca81176501f1d23bba8da753769af58ecac4c
 
     m_Climber.setDefaultCommand(new NeutralClimb());
     m_Conveyor.setDefaultCommand(new ConveyorIntake());
@@ -108,6 +115,7 @@ public class RobotContainer {
   }
 
   public Command getAutonomousCommand() {
+<<<<<<< HEAD
     if(m_autonChooser.getSelected().equals("auto1")) {
       return new TwoSecondDrive();
     } else if(m_autonChooser.getSelected().equals("auto2")) {
@@ -116,5 +124,8 @@ public class RobotContainer {
       return new FarShootAndDrive();
     }
     return new TwoSecondDrive();
+=======
+    return new ThreeSecondDriveAndShoot();
+>>>>>>> 778ca81176501f1d23bba8da753769af58ecac4c
   }
 }

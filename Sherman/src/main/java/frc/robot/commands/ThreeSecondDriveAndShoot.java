@@ -22,8 +22,9 @@ public class ThreeSecondDriveAndShoot extends CommandBase {
   @Override
   public void initialize() {
     startTime = Timer.getFPGATimestamp();
-    m_Shooter.setBoosterPercentControl(1.0);
-    m_Shooter.setFlywheelPercentControl(0.7);
+    m_Shooter.setBoosterPercentControl(0);
+    m_Shooter.setFlywheelPercentControl(0);
+    m_Conveyor.setPercentControl(0.0);
   }  
 
   @Override

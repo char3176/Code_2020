@@ -18,6 +18,7 @@ import frc.robot.commands.ArcadeDrive;
 import frc.robot.commands.ChaseBall;
 import frc.robot.commands.SimpleClimb;
 import frc.robot.commands.ConveyorIntake;
+import frc.robot.commands.FarShootAndDrive;
 import frc.robot.commands.Harvest;
 import frc.robot.commands.ManualConveyor;
 import frc.robot.commands.ManualHarvest;
@@ -57,6 +58,8 @@ public class RobotContainer {
   private SendableChooser<String> m_autonChooser;
   private static final String auto1 = "auto1";
   private static final String auto2 = "auto2";
+  private static final String auto3 = "auto3";
+
 
   public RobotContainer() {
     m_Compressor = new Compressor();
@@ -71,10 +74,11 @@ public class RobotContainer {
     m_Turret = Turret.getInstance();
     m_VisionClient = VisionClient.getInstance();
 
-    //m_autonChooser = new SendableChooser<>();
-    //m_autonChooser.addOption("2 Second Drive", auto1);
-    //m_autonChooser.addOption("3 Second Drive And Shoot", auto2);
-    //SmartDashboard.putData("Auton Chooser", m_autonChooser);
+    m_autonChooser = new SendableChooser<>();
+    m_autonChooser.addOption("2 Second Drive", auto1);
+    m_autonChooser.addOption("3 Second Drive And Shoot", auto2);
+    m_autonChooser.addOption("Far Shoot and Drive", auto3);
+    SmartDashboard.putData("Auton Chooser", m_autonChooser);
 
     m_Climber.setDefaultCommand(new NeutralClimb());
     m_Conveyor.setDefaultCommand(new ConveyorIntake());
@@ -96,7 +100,7 @@ public class RobotContainer {
     m_Controller.getManualHarvestButton().whenHeld(new ManualHarvest(() -> m_Controller.getManualHarvestMotorSupply(), () -> m_Controller.getManualHarvestActuate()));
     m_Controller.getManualConveyorButton().whenHeld(new ManualConveyor(() -> m_Controller.getManualConveyorSupplier()));
     m_Controller.getClimbButton().whenHeld(new AdvancedClimb(() -> m_Controller.getClimbPercent()));
-    //m_Controller.getSowButton().whenHeld(new Sow());
+    m_Controller.getSowButton().whenHeld(new Sow());
     // m_Controller.getManualShooterButton().whenHeld(new ManualShooter(() -> m_Controller.getManualShooterFlywheel(), () -> m_Controller.getManualShooterBooster()));
     //m_Controller.getManualTurretButton().whenHeld(new ManualTurret(() -> m_Controller.getManualTurretIncrease()));
     m_Controller.getSpinDownButton().whenPressed(new SpinDownShooter());
@@ -104,6 +108,13 @@ public class RobotContainer {
   }
 
   public Command getAutonomousCommand() {
-    return new ThreeSecondDriveAndShoot();
+    if(m_autonChooser.getSelected().equals("auto1")) {
+      return new TwoSecondDrive();
+    } else if(m_autonChooser.getSelected().equals("auto2")) {
+      return new ThreeSecondDriveAndShoot();
+    } else if(m_autonChooser.getSelected().equals("auto3")) {
+      return new FarShootAndDrive();
+    }
+    return new TwoSecondDrive();
   }
 }
